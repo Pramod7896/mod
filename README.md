@@ -119,7 +119,9 @@ That bundled sample allows the deployed app to start analysis immediately withou
 
 ## Server Deployment
 
-These commands assume a Linux server with Python 3.11+, git, and ffmpeg available.
+The app is designed so a fresh server only needs the repository, Python dependencies, and the run command. The default YOLO model downloads automatically on first run, and the bundled demo video is already included in the repo.
+
+These commands assume a Linux server with Python 3.11+ and git available.
 
 Install system packages:
 
@@ -154,6 +156,20 @@ Run the app on the server:
 ```bash
 streamlit run app.py --server.address 0.0.0.0 --server.port 8501
 ```
+
+On first run, the app automatically creates runtime folders and downloads the lightweight pretrained model into:
+
+```text
+models/yolo11n.pt
+```
+
+No manual model upload is required for the standard demo. The built-in sample video loads from:
+
+```text
+samples/sample_conveyor.mp4
+```
+
+So after install, the demo can be opened and **START AI ANALYSIS** can be clicked directly.
 
 Open this in the browser:
 
