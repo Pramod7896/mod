@@ -11,6 +11,7 @@ MODELS_DIR = ROOT_DIR / "models"
 TEMP_DIR = ROOT_DIR / "temp"
 OUTPUTS_DIR = ROOT_DIR / "outputs"
 ASSETS_DIR = ROOT_DIR / "assets"
+SAMPLES_DIR = ROOT_DIR / "samples"
 
 DEFAULT_MODEL_NAME = "yolo11n.pt"
 OPEN_VOCAB_MODEL_NAME = "yolov8s-worldv2.pt"
@@ -45,5 +46,5 @@ class ProcessingConfig:
 def ensure_directories() -> None:
     """Create all runtime directories if missing."""
 
-    for path in (MODELS_DIR, TEMP_DIR, OUTPUTS_DIR, ASSETS_DIR):
+    for path in (MODELS_DIR, TEMP_DIR, OUTPUTS_DIR, ASSETS_DIR, SAMPLES_DIR):
         path.mkdir(parents=True, exist_ok=True)

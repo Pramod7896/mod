@@ -24,6 +24,8 @@ temp/
   .gitkeep
 outputs/
   .gitkeep
+samples/
+  sample_conveyor.mp4
 src/
   config.py
   detection/
@@ -106,6 +108,14 @@ git push
 ```
 
 Do not commit downloaded model files such as `models/yolo11n.pt`, custom models such as `models/manufacturing_best.pt`, uploaded videos, or processed output videos.
+
+The repository includes one small demo video at:
+
+```text
+samples/sample_conveyor.mp4
+```
+
+That bundled sample allows the deployed app to start analysis immediately without requiring an upload first.
 
 ## Server Deployment
 

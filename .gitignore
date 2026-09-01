@@ -37,6 +37,9 @@ outputs/*
 *.mkv
 *.webm
 
+!samples/
+!samples/sample_conveyor.mp4
+
 !models/.gitkeep
 !temp/.gitkeep
 !outputs/.gitkeep

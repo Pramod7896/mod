@@ -10,6 +10,8 @@ from pathlib import Path
 
 import cv2
 
+from src.config import SAMPLES_DIR
+
 logger = logging.getLogger(__name__)
 
 
@@ -65,6 +67,15 @@ def find_latest_downloads_video() -> Path | None:
     if not videos:
         return None
     return max(videos, key=lambda path: path.stat().st_mtime)
+
+
+def find_sample_video() -> Path | None:
+    """Return the bundled sample video first, then fall back to Downloads."""
+
+    bundled = SAMPLES_DIR / "sample_conveyor.mp4"
+    if bundled.exists():
+        return bundled
+    return find_latest_downloads_video()
 
 
 def format_timestamp(seconds: float) -> str:

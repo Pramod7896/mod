@@ -34,7 +34,7 @@ from src.ui.components import (
 )
 from src.ui.styles import load_css
 from src.utils.file_utils import cleanup_old_files, save_uploaded_file
-from src.utils.video_utils import find_latest_downloads_video, get_video_info
+from src.utils.video_utils import find_sample_video, get_video_info
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
@@ -163,7 +163,7 @@ def load_default_sample_video() -> None:
 
     if st.session_state.uploaded_video_path or st.session_state.video_info:
         return
-    sample_path = find_latest_downloads_video()
+    sample_path = find_sample_video()
     if not sample_path:
         return
     try:
@@ -204,7 +204,7 @@ def main() -> None:
 
     st.markdown('<div class="section-title">Upload Production Line Footage</div>', unsafe_allow_html=True)
     if st.session_state.video_info and st.session_state.uploaded_video_path:
-        st.info("Sample video loaded from Downloads. You can click START AI ANALYSIS directly, or upload another video.")
+        st.info("Sample video loaded. You can click START AI ANALYSIS directly, or upload another video.")
     uploaded = st.file_uploader(
         "Supported: MP4, AVI, MOV, MKV",
         type=list(VIDEO_EXTENSIONS),
