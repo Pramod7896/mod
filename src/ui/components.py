@@ -110,18 +110,18 @@ def render_results(
     st.video(str(output_video))
 
     left, right = st.columns(2)
-    left.plotly_chart(make_timeline_chart(timeline_df), use_container_width=True)
-    right.plotly_chart(make_rate_chart(timeline_df), use_container_width=True)
+    left.plotly_chart(make_timeline_chart(timeline_df), use_container_width=True, key="results_timeline")
+    right.plotly_chart(make_rate_chart(timeline_df), use_container_width=True, key="results_rate")
 
     left, right = st.columns(2)
     if not class_distribution.empty:
         fig = px.bar(class_distribution, x="class", y="count", labels={"class": "Class", "count": "Count"})
         fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", height=320)
-        left.plotly_chart(fig, use_container_width=True)
+        left.plotly_chart(fig, use_container_width=True, key="results_class_distribution")
     if confidence_values:
         fig = px.histogram(x=confidence_values, nbins=20, labels={"x": "Confidence"})
         fig.update_layout(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)", height=320)
-        right.plotly_chart(fig, use_container_width=True)
+        right.plotly_chart(fig, use_container_width=True, key="results_confidence_distribution")
 
     st.markdown('<div class="section-title">Event Log</div>', unsafe_allow_html=True)
     st.dataframe(events_df, hide_index=True, use_container_width=True)

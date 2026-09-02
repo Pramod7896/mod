@@ -280,8 +280,16 @@ def main() -> None:
                         live_events = events_to_dataframe(stats.events)
                         timeline = build_timeline(live_events, stats.frame_number / max(info.fps, 1))
                         c1, c2 = st.columns(2)
-                        c1.plotly_chart(make_timeline_chart(timeline), use_container_width=True)
-                        c2.plotly_chart(make_rate_chart(timeline), use_container_width=True)
+                        c1.plotly_chart(
+                            make_timeline_chart(timeline),
+                            use_container_width=True,
+                            key=f"live_timeline_{stats.frame_number}",
+                        )
+                        c2.plotly_chart(
+                            make_rate_chart(timeline),
+                            use_container_width=True,
+                            key=f"live_rate_{stats.frame_number}",
+                        )
 
             result = processor.process(Path(st.session_state.uploaded_video_path), progress_callback=on_progress)
             st.session_state.result = result
